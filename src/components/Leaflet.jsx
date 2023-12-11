@@ -3,11 +3,9 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { locationIcon } from "../assets";
 import { Icon } from "leaflet";
-console.log(locationIcon);
 
 const Leaflet = (props) => {
   const position = [`${props.lat}`, `${props.lng}`];
-
   const customIcon = new Icon({
     iconUrl: `${locationIcon}`,
     iconSize: [46, 56],

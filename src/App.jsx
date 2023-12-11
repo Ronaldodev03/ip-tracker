@@ -7,16 +7,25 @@ import Modal from "./components/Modal";
 function App() {
   const [ipInfo, setIpInfo] = useState(null); // longitud y latitud
   const [loading, setLoading] = useState(true);
-  const [ip, setIp] = useState("check");
+  const [ip, setIp] = useState("");
   const [ipData, setIpData] = useState(null); // datos de localidad
   const [inputValue, setInputValue] = useState(""); // Nuevo estado para la input
   const [open, setOpen] = useState(false); //modal
 
+  //console.log(ipInfo);
+  //console.log(ipData);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchGeoIPInfo({ ip });
+        const [data, dataSrc2] = await Promise.all([
+          fetchGeoIPInfo({ ip }),
+          fetchGeoIPInfoSrc2({ ip }),
+        ]);
         setIpInfo(data);
+        // console.log(data);
+        setIpData(dataSrc2);
+        //  console.log(dataSrc2);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -24,20 +33,6 @@ function App() {
     };
 
     fetchData();
-  }, [ip]);
-
-  useEffect(() => {
-    const fetchDataSrc2 = async () => {
-      try {
-        const dataSrc2 = await fetchGeoIPInfoSrc2({ ip });
-        setIpData(dataSrc2);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-
-    fetchDataSrc2();
   }, [ip]);
 
   const handleInputChange = (e) => {
@@ -77,7 +72,7 @@ function App() {
               <input
                 type="text"
                 placeholder="Search for any IP address or domain"
-                className="pl-6 flex-1 rounded-l-lg text-lg leading-normal h-[3.625rem] text-primaryDark  placeholder:text-primaryDark/50"
+                className="pl-6 flex-1 outline-0 rounded-l-lg text-lg leading-normal h-[3.625rem] text-primaryDark  placeholder:text-primaryDark/50"
                 value={inputValue}
                 onChange={handleInputChange}
               />
@@ -106,7 +101,7 @@ function App() {
                     <span className=" block text-[0.625rem] lg:text-[0.75rem]  opacity-50 tracking-[0.091125rem] lg:tracking-[0.109rem] leading-normal font-bold">
                       LOCATION
                     </span>
-                    {ipData?.location.region}
+                    {ipInfo?.city}
                   </p>
                   <p className="pb-6 md:pb-0 md:flex-1 text-primaryDark last:md:border-r-0 md:border-r lg:text-[1.625rem] lg:leading-[1.875rem] lg:tracking-[-0.0145rem] md:border-r-black/20 font-medium  text-xl leading-6 tracking-[-0.0111875rem]">
                     <span className=" block text-[0.625rem] lg:text-[0.75rem]  opacity-50 tracking-[0.091125rem] lg:tracking-[0.109rem] leading-normal font-bold">
@@ -151,7 +146,7 @@ function App() {
             <button
               className="text-white px-10 rounded-md py-2 whitespace-nowrap bg-black mx-auto  hover:bg-[#333] transition-all duration-200"
               onClick={() => {
-                setIp("check"), setOpen(false), setInputValue("");
+                setIp(""), setOpen(false), setInputValue("");
               }}
             >
               My location
