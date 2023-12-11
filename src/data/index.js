@@ -3,7 +3,7 @@ export const fetchGeoIPInfo = async ({ ip }) => {
   console.log(ip);
   try {
     const response = await fetch(
-      `http://api.ipstack.com/${ip}?access_key=${API_KEY}`
+      `https://api.ipstack.com/${ip}?access_key=${API_KEY}`
     );
     const data = await response.json();
     // console.log("data_src_01", data);
