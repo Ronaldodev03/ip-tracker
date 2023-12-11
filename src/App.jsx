@@ -90,7 +90,7 @@ function App() {
           <div className="px-6 max-w-[69.375rem] relative mt-[-130px]  mb-[-195px] md:mb-[-70px] mx-auto w-full  z-[500]">
             <div className="bg-white rounded-[0.9385rem] shadow-custom">
               {!loading ? (
-                <div className="py-6 [&>*]:md:px-8 md:flex text-center md:text-left ">
+                <div className="py-6 lg:py-[2.3125rem] [&>*]:md:px-8 md:flex text-center md:text-left ">
                   <p className="pb-6 md:pb-0 md:flex-1 text-primaryDark last:md:border-r-0 md:border-r lg:text-[1.625rem] lg:leading-[1.875rem] lg:tracking-[-0.0145rem] md:border-r-black/20 font-medium  text-xl leading-6 tracking-[-0.0111875rem]">
                     <span className=" block text-[0.625rem] lg:text-[0.75rem] opacity-50 tracking-[0.091125rem] lg:tracking-[0.109rem] leading-normal font-bold">
                       IP ADDRESS
