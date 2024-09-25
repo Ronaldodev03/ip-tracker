@@ -11,6 +11,13 @@ const Leaflet = (props) => {
     iconSize: [46, 56],
   });
 
+  if (position.some((position) => position === "null"))
+    return (
+      <div className=" mt-[300px] md:mt-[250px] text-center text-3xl font-bold bg-red-500 text-white w-[95%] max-w-2xl mx-auto py-2 rounded-lg">
+        NOT AVAILABLE
+      </div>
+    );
+
   return (
     <div>
       <MapContainer

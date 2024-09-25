@@ -107,7 +107,7 @@ function App() {
                     <span className=" block text-[0.625rem] lg:text-[0.75rem]  opacity-50 tracking-[0.091125rem] lg:tracking-[0.109rem] leading-normal font-bold">
                       TIMEZONE
                     </span>
-                    {ipData?.location.timezone}
+                    {ipData?.location?.timezone}
                   </p>
                   <p className="pb-6 md:pb-0 md:flex-1 text-primaryDark last:md:border-r-0 md:border-r lg:text-[1.625rem] lg:leading-[1.875rem] lg:tracking-[-0.0145rem] md:border-r-black/20 font-medium  text-xl leading-6 tracking-[-0.0111875rem]">
                     <span className=" block text-[0.625rem] lg:text-[0.75rem]  opacity-50 tracking-[0.091125rem] lg:tracking-[0.109rem] leading-normal font-bold">
